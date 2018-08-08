@@ -24,7 +24,7 @@ def main(text):
  pid = os.getpid()
  py = psutil.Process(pid)
  cpu = str(py.cpu_percent())
- ram = str(float('{:.3f}'.format(py.memory_info()[0]/(2**12))))
+ ram = str(float('{:.3f}'.format(py.memory_info()[1]/(10**6))))
  print("CPU : " + cpu + "%")
  print("RAM : " + ram + " Mb")
  print("Текст: %s \n Хэш SHA-256: %s" %(text, sha256))
@@ -35,8 +35,8 @@ def main(text):
 
 
 if __name__=='__main__':
-    start = time.time()
     text = input("Введите текст для хэш: ")
+    start = time.time()
     main(text)
     d=time.time()-start
     file = open("log.txt","wt")
