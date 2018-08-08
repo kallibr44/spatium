@@ -36,9 +36,9 @@ def main(text):
 
 if __name__=='__main__':
     text = input("Введите текст для хэш: ")
-    start = time.time()
+    start = time.time()  # старт таймера для отслеживания времени отработки программы
     main(text)
-    d=time.time()-start
+    d=time.time()-start # запись времени отработки
     file = open("log.txt","wt")
     file.write("Нагрузка CPU: {0} %\n Использовано RAM: {1} Mb\n Текст: {2} \n Хэш SHA-256: {3} \n хэш Scrypt: {4} \n хэш X11: {5}\n Время выполнения: {6} \n".format(load[0],load[1],text,hash[0],hash[1],hash[2],d))
     file.close()
