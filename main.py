@@ -15,12 +15,11 @@ def main(text):
  global load
  global sha256,scrypt,x11
  global hash
+ pid = os.getpid() # получаем идентификатор процесса программы
+ py = psutil.Process(pid)# Создаем объект "Процесс"
  sha256 = hashlib.sha256(bytes(text, encoding='utf-8')).hexdigest()
  scryp = scrypt(text).hex()
  x11 = getPoWHash(bytes(text, encoding='utf-8'))[2:-1].hex()
- pid = os.getpid() # получаем идентификатор процесса программы
- py = psutil.Process(pid)# Создаем объект "Процесс"
- cpu = str(py.cpu_percent())# считываем нагрузку на CPU
  ram = str(float('{:.3f}'.format(py.memory_info()[1]/(10**6))))# ситчываем RAM нагрузку в байта и конвертируем в Mb (bytes*(10**6))
  print("CPU : " + cpu + "%")
  print("RAM : " + ram + " Mb")
