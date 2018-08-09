@@ -20,6 +20,7 @@ def main(text):
  sha256 = hashlib.sha256(bytes(text, encoding='utf-8')).hexdigest()
  scryp = scrypt(text).hex()
  x11 = getPoWHash(bytes(text, encoding='utf-8'))[2:-1].hex()
+ cpu = str(psutil.cpu_prcent(interval=2))# считывание нагрузки на CPU. interval= кол-во секунд, сколько он будет считывать нагрузку.
  ram = str(float('{:.3f}'.format(py.memory_info()[1]/(10**6))))# ситчываем RAM нагрузку в байта и конвертируем в Mb (bytes*(10**6))
  print("CPU : " + cpu + "%")
  print("RAM : " + ram + " Mb")
